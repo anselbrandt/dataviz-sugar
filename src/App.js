@@ -5,7 +5,7 @@ import Debug from './Debug';
 const sugar = require('./sugar.json');
 
 function App() {
-  const [data, setData] = useState(sugar);
+  const data = sugar;
 
   return (
     <div className="App">

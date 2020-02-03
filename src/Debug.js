@@ -5,8 +5,6 @@ export default function Debug(props) {
   return (
     <React.Fragment>
       <br></br>
-      <div>Debug Info</div>
-      <br></br>
       <div>
         {data
           .filter(value => !value.gender)

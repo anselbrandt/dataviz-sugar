@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import styles from './App.module.css';
 import {
   select,
   line,
@@ -26,15 +27,16 @@ export default function Chart(props) {
         .ticks(6)
         .tickFormat(value => `${labels[value]}`);
       svg
-        .select('.x-axis')
+        .select(`.${styles.xAxis}`)
         .style('transform', `translateY(${height}px)`)
-        .call(xAxis);
+        .call(xAxis)
+        .attr('color', 'dimgrey');
       const yAxis = axisLeft(yScale)
         .ticks(4)
         .tickFormat(value => value + 'mg')
         .tickSizeOuter(0);
       svg
-        .select('.y-axis')
+        .select(`.${styles.yAxis}`)
         .call(yAxis)
         .attr('color', 'dimgrey');
 
@@ -58,9 +60,9 @@ export default function Chart(props) {
 
   return (
     <React.Fragment>
-      <svg ref={svgRef}>
-        <g className="x-axis" />
-        <g className="y-axis" />
+      <svg className={styles.svg} ref={svgRef}>
+        <g className={styles.xAxis} />
+        <g className={styles.yAxis} />
       </svg>
     </React.Fragment>
   );

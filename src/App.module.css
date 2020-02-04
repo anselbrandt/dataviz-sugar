@@ -1,6 +1,6 @@
-.App {
+.app {
   text-align: center;
-  color: #282c34;
+  color: dimgray;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,13 +8,13 @@
   font-size: calc(10px + 2vmin);
 }
 
-svg {
+.svg {
   margin: 1em;
   outline: 1px solid dimgray;
   overflow: visible;
 }
 
-.title-bar {
+.titleBar {
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -39,23 +39,29 @@ svg {
   justify-content: center;
 }
 
-.button {
+.buttonContainer {
   padding: 0.5em;
 }
 
-button {
+.button {
   padding: 1em;
   font-size: 0.5em;
   font-weight: bold;
+  color: dimgray;
   border-radius: 12px;
-}
-
-button {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.2s;
 }
 
-button:hover {
+.button:hover {
   background-color: tomato;
   color: white;
+}
+
+.xAxis {
+  font-size: 0.5em;
+}
+
+.yAxis {
+  font-size: 0.5em;
 }

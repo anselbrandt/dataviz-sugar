@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './App.module.css';
 
 export default function Controls(props) {
   const {
@@ -9,17 +10,25 @@ export default function Controls(props) {
   } = props;
   return (
     <React.Fragment>
-      <div className="button">
-        <button onClick={handleSelect2008}>2008-2010</button>
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} onClick={handleSelect2008}>
+          2008-2010
+        </button>
       </div>
-      <div className="button">
-        <button onClick={handleSelect2010}>2010-2012</button>
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} onClick={handleSelect2010}>
+          2010-2012
+        </button>
       </div>
-      <div className="button">
-        <button onClick={handleSelect2012}>2012-2014</button>
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} onClick={handleSelect2012}>
+          2012-2014
+        </button>
       </div>
-      <div className="button">
-        <button onClick={handleSelect2014}>2014-2016</button>
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} onClick={handleSelect2014}>
+          2014-2016
+        </button>
       </div>
     </React.Fragment>
   );

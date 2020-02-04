@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import './App.css';
+import styles from './App.module.css';
 import Chart from './Chart';
 import Debug from './Debug';
 import Controls from './Controls';
@@ -91,13 +91,13 @@ function App() {
   const handleSelect2014 = () => setSvgData(data2014);
 
   return (
-    <div className="App">
-      <div className="title-bar">
-        <div className="title">Sugar</div>
-        <div className="legend">Colorscale</div>
-        <div className="legend">Linewidths</div>
+    <div className={styles.app}>
+      <div className={styles.titleBar}>
+        <div className={styles.title}>Sugar</div>
+        <div className={styles.legend}>Colorscale</div>
+        <div className={styles.legend}>Linewidths</div>
       </div>
-      <div className="chart">
+      <div className={styles.chart}>
         <Chart
           svgRef={svgRef}
           svgData={svgData}
@@ -108,7 +108,7 @@ function App() {
           labels={labels}
         />
       </div>
-      <div className="controls">
+      <div className={styles.controls}>
         <Controls
           handleSelect2008={handleSelect2008}
           handleSelect2010={handleSelect2010}

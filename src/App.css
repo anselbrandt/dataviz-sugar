@@ -13,3 +13,20 @@ svg {
   margin: 1em;
   outline: 1px solid dimgray;
 }
+
+.title-bar {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: calc(10px + 2vmin);
+  padding: 1em;
+}
+
+.legend {
+  padding: 1em;
+}

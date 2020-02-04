@@ -9,7 +9,11 @@ function App() {
 
   return (
     <div className="App">
-      <div className="title">Sugar</div>
+      <div className="title-bar">
+        <div className="title">Title</div>
+        <div className="legend">Legend 1</div>
+        <div className="legend">Legend 2</div>
+      </div>
       <div className="chart">
         <Chart data={data} />
       </div>

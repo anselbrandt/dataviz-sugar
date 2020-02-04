@@ -36,22 +36,22 @@ function App() {
       const allAges = data.filter(value => value.gender === null);
 
       const allAges2008 = allAges.map(value => {
-        return { id: value.id, age: value.age, level: value['2008-10'] };
+        return { id: value.id, age: value.age, level: value['2008-10'] / 5 };
       });
       setData2008(allAges2008);
 
       const allAges2010 = allAges.map(value => {
-        return { id: value.id, age: value.age, level: value['2010-12'] };
+        return { id: value.id, age: value.age, level: value['2010-12'] / 5 };
       });
       setData2010(allAges2010);
 
       const allAges2012 = allAges.map(value => {
-        return { id: value.id, age: value.age, level: value['2012-14'] };
+        return { id: value.id, age: value.age, level: value['2012-14'] / 5 };
       });
       setData2012(allAges2012);
 
       const allAges2014 = allAges.map(value => {
-        return { id: value.id, age: value.age, level: value['2014-16'] };
+        return { id: value.id, age: value.age, level: value['2014-16'] / 5 };
       });
       setData2014(allAges2014);
     }
@@ -67,7 +67,7 @@ function App() {
         values.add(element['2012-14']);
         values.add(element['2014-16']);
       });
-      setRange([Math.min(...values), Math.max(...values) * 1.1]);
+      setRange([Math.min(...values) / 5, (Math.max(...values) / 5) * 1.1]);
     }
   }, [data]);
 

@@ -57,7 +57,7 @@ export default function Chart(props) {
         .attr('color', 'dimgrey');
       const yAxis = axisLeft(yScale)
         .ticks(4)
-        .tickFormat(value => value + 'mg')
+        .tickFormat(value => value + 'X')
         .tickSizeOuter(0);
       svg
         .select(`.${styles.yAxis}`)

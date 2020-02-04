@@ -1,5 +1,6 @@
 [
   {
+    "id": 0,
     "group": "child",
     "gender": null,
     "age": "1.5-3",
@@ -9,6 +10,7 @@
     "2014-16": 11.3
   },
   {
+    "id": 1,
     "group": "child",
     "gender": null,
     "age": "4-10",
@@ -18,6 +20,7 @@
     "2014-16": 13.5
   },
   {
+    "id": 2,
     "group": "child",
     "gender": null,
     "age": "11-18",
@@ -27,6 +30,7 @@
     "2014-16": 14.1
   },
   {
+    "id": 3,
     "group": "adult",
     "gender": null,
     "age": "19-64",
@@ -36,6 +40,7 @@
     "2014-16": 11.1
   },
   {
+    "id": 4,
     "group": "adult",
     "gender": "male",
     "age": "19-64",
@@ -45,6 +50,7 @@
     "2014-16": 11.1
   },
   {
+    "id": 5,
     "group": "adult",
     "gender": "female",
     "age": "19-64",
@@ -54,6 +60,7 @@
     "2014-16": 11.2
   },
   {
+    "id": 6,
     "group": "adult",
     "gender": null,
     "age": "65",
@@ -63,6 +70,7 @@
     "2014-16": 11.2
   },
   {
+    "id": 7,
     "group": "adult",
     "gender": "male",
     "age": "65",
@@ -72,6 +80,7 @@
     "2014-16": 11.8
   },
   {
+    "id": 8,
     "group": "adult",
     "gender": "female",
     "age": "65",
@@ -81,6 +90,7 @@
     "2014-16": 10.4
   },
   {
+    "id": 9,
     "group": "adult",
     "gender": null,
     "age": "65-74",
@@ -90,6 +100,7 @@
     "2014-16": 11
   },
   {
+    "id": 10,
     "group": "adult",
     "gender": "male",
     "age": "65-74",
@@ -99,6 +110,7 @@
     "2014-16": 11.8
   },
   {
+    "id": 11,
     "group": "adult",
     "gender": "female",
     "age": "65-74",
@@ -108,6 +120,7 @@
     "2014-16": 10.4
   },
   {
+    "id": 12,
     "group": "adult",
     "gender": null,
     "age": "75",
@@ -117,6 +130,7 @@
     "2014-16": 11.3
   },
   {
+    "id": 13,
     "group": "adult",
     "gender": "male",
     "age": "75",
@@ -126,6 +140,7 @@
     "2014-16": 12.5
   },
   {
+    "id": 14,
     "group": "adult",
     "gender": "female",
     "age": "75",

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import Chart from './Chart';
 import Debug from './Debug';
@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <div className="title-bar">
         <div className="title">Title</div>
-        <div className="legend">Legend 1</div>
-        <div className="legend">Legend 2</div>
+        <div className="legend">Colorscale</div>
+        <div className="legend">Linewidths</div>
       </div>
       <div className="chart">
         <Chart data={data} />

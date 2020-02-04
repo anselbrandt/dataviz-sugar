@@ -9,7 +9,7 @@ export default function Debug(props) {
         {data
           .filter(value => !value.gender)
           .map(value => (
-            <div>
+            <div key={value.id}>
               {value.group} {value.age}
             </div>
           ))}

@@ -1,8 +1,6 @@
 import React from 'react';
 
-export default function Chart(props) {
-  const { data } = props;
-
+export default function Chart() {
   return (
     <React.Fragment>
       <svg></svg>

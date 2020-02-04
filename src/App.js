@@ -23,8 +23,8 @@ function App() {
   const [selected, setSelected] = useState([0, 0]);
 
   useEffect(() => {
-    setSvgWidth(width * 0.6);
-    setSvgHeight(width * 0.6 * 0.5);
+    setSvgWidth(width * 0.8);
+    setSvgHeight(width * 0.8 * 0.5);
   }, [width]);
 
   useEffect(() => {
@@ -89,9 +89,7 @@ function App() {
   return (
     <div className={styles.app}>
       <div className={styles.titleBar}>
-        <div className={styles.title}>Sugar</div>
-        <div className={styles.legend}>Colorscale</div>
-        <div className={styles.legend}>Linewidths</div>
+        <div className={styles.title}>Daily Sugar Intake over Recommended</div>
       </div>
       <div className={styles.chart}>
         <Chart
@@ -118,13 +116,18 @@ function App() {
           selected={selected}
         />
       </div>
-      {/*<Debug
+      <div className={styles.footer}>
+        <a href="https://github.com/anselbrandt/dataviz-sugar">(Code)</a>
+      </div>
+      <div>
+        {/*<Debug
         data={svgData}
         width={svgWidth}
         height={svgHeight}
         domain={domain}
         range={range}
       />*/}
+      </div>
     </div>
   );
 }

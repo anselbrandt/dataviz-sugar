@@ -53,6 +53,24 @@
   transition-duration: 0.2s;
 }
 
+.buttonSelected {
+  padding: 1em;
+  font-size: 0.5em;
+  font-weight: bold;
+  background-color: tomato;
+  color: white;
+  border-radius: 12px;
+}
+
+.buttonPrevious {
+  padding: 1em;
+  font-size: 0.5em;
+  font-weight: bold;
+  background-color: dodgerblue;
+  color: white;
+  border-radius: 12px;
+}
+
 .button:hover {
   background-color: tomato;
   color: white;

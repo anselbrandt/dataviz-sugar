@@ -10,10 +10,34 @@ import {
 } from 'd3';
 
 export default function Chart(props) {
-  const { svgRef, svgData, width, height, domain, range, labels } = props;
+  const {
+    svgRef,
+    width,
+    height,
+    domain,
+    range,
+    labels,
+    data2008,
+    data2010,
+    data2012,
+    data2014,
+    selected,
+  } = props;
 
   useEffect(() => {
-    if (svgRef && svgData && width && height && domain && range && labels) {
+    if (
+      svgRef &&
+      width &&
+      height &&
+      domain &&
+      range &&
+      labels &&
+      data2008 &&
+      data2010 &&
+      data2012 &&
+      data2014 &&
+      selected
+    ) {
       const svg = select(svgRef.current);
 
       const xScale = scaleLinear()
@@ -40,23 +64,123 @@ export default function Chart(props) {
         .call(yAxis)
         .attr('color', 'dimgrey');
 
-      const lineChart = line()
+      const line2008 = line()
         .x((value, index) => xScale(index))
         .y(value => yScale(value.level))
         .curve(curveCardinal);
       svg
         .attr('width', `${width}px`)
         .attr('height', `${height}px`)
-        .selectAll('.line')
-        .data([svgData])
+        .selectAll('.line2008')
+        .data([data2008])
         .join('path')
-        .attr('class', 'line')
-        .attr('d', lineChart)
+        .attr('class', 'line2008')
+        .attr('d', line2008)
         .attr('fill', 'none')
-        .attr('stroke', 'grey')
-        .attr('stroke-width', '2');
+        .attr(
+          'stroke',
+          selected[1] === 2008
+            ? 'tomato'
+            : selected[0] === 2008
+            ? 'dodgerblue'
+            : 'grey',
+        )
+        .attr(
+          'stroke-width',
+          selected[1] === 2008 ? '4' : selected[0] === 2008 ? '4' : '2',
+        );
+
+      const line2010 = line()
+        .x((value, index) => xScale(index))
+        .y(value => yScale(value.level))
+        .curve(curveCardinal);
+      svg
+        .attr('width', `${width}px`)
+        .attr('height', `${height}px`)
+        .selectAll('.line2010')
+        .data([data2010])
+        .join('path')
+        .attr('class', 'line2010')
+        .attr('d', line2010)
+        .attr('fill', 'none')
+        .attr(
+          'stroke',
+          selected[1] === 2010
+            ? 'tomato'
+            : selected[0] === 2010
+            ? 'dodgerblue'
+            : 'grey',
+        )
+        .attr(
+          'stroke-width',
+          selected[1] === 2010 ? '4' : selected[0] === 2010 ? '4' : '2',
+        );
+
+      const line2012 = line()
+        .x((value, index) => xScale(index))
+        .y(value => yScale(value.level))
+        .curve(curveCardinal);
+      svg
+        .attr('width', `${width}px`)
+        .attr('height', `${height}px`)
+        .selectAll('.line2012')
+        .data([data2012])
+        .join('path')
+        .attr('class', 'line2012')
+        .attr('d', line2012)
+        .attr('fill', 'none')
+        .attr(
+          'stroke',
+          selected[1] === 2012
+            ? 'tomato'
+            : selected[0] === 2012
+            ? 'dodgerblue'
+            : 'grey',
+        )
+        .attr(
+          'stroke-width',
+          selected[1] === 2012 ? '4' : selected[0] === 2012 ? '4' : '2',
+        );
+
+      const line2014 = line()
+        .x((value, index) => xScale(index))
+        .y(value => yScale(value.level))
+        .curve(curveCardinal);
+      svg
+        .attr('width', `${width}px`)
+        .attr('height', `${height}px`)
+        .selectAll('.line2014')
+        .data([data2014])
+        .join('path')
+        .attr('class', 'line2014')
+        .attr('d', line2014)
+        .attr('fill', 'none')
+        .attr(
+          'stroke',
+          selected[1] === 2014
+            ? 'tomato'
+            : selected[0] === 2014
+            ? 'dodgerblue'
+            : 'grey',
+        )
+        .attr(
+          'stroke-width',
+          selected[1] === 2014 ? '4' : selected[0] === 2014 ? '4' : '2',
+        );
     }
-  }, [svgRef, svgData, width, height, domain, range, labels]);
+  }, [
+    svgRef,
+    width,
+    height,
+    domain,
+    range,
+    labels,
+    data2008,
+    data2010,
+    data2012,
+    data2014,
+    selected,
+  ]);
 
   return (
     <React.Fragment>

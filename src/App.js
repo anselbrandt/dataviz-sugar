@@ -12,7 +12,6 @@ function App() {
   const { width } = useGetViewport();
   const [svgWidth, setSvgWidth] = useState();
   const [svgHeight, setSvgHeight] = useState();
-  const [svgData, setSvgData] = useState();
   const [data2008, setData2008] = useState();
   const [data2010, setData2010] = useState();
   const [data2012, setData2012] = useState();
@@ -20,6 +19,7 @@ function App() {
   const [domain, setDomain] = useState();
   const [range, setRange] = useState();
   const [labels, setLabels] = useState();
+  const [selected, setSelected] = useState([0, 0]);
 
   useEffect(() => {
     setSvgWidth(width * 0.6);
@@ -57,12 +57,6 @@ function App() {
   }, [data]);
 
   useEffect(() => {
-    if (!svgData && data2008) {
-      setSvgData(data2008);
-    }
-  }, [svgData, data2008]);
-
-  useEffect(() => {
     if (data) {
       setDomain([0, 6]);
       let values = new Set();
@@ -85,10 +79,11 @@ function App() {
     }
   }, [data]);
 
-  const handleSelect2008 = () => setSvgData(data2008);
-  const handleSelect2010 = () => setSvgData(data2010);
-  const handleSelect2012 = () => setSvgData(data2012);
-  const handleSelect2014 = () => setSvgData(data2014);
+  const handleSelect2008 = () => setSelected([selected[1], 2008]);
+  const handleSelect2010 = () => setSelected([selected[1], 2010]);
+  const handleSelect2012 = () => setSelected([selected[1], 2012]);
+  const handleSelect2014 = () => setSelected([selected[1], 2014]);
+  const handleClear = () => setSelected([0, 0]);
 
   return (
     <div className={styles.app}>
@@ -100,12 +95,16 @@ function App() {
       <div className={styles.chart}>
         <Chart
           svgRef={svgRef}
-          svgData={svgData}
           width={svgWidth}
           height={svgHeight}
           domain={domain}
           range={range}
           labels={labels}
+          data2008={data2008}
+          data2010={data2010}
+          data2012={data2012}
+          data2014={data2014}
+          selected={selected}
         />
       </div>
       <div className={styles.controls}>
@@ -114,6 +113,8 @@ function App() {
           handleSelect2010={handleSelect2010}
           handleSelect2012={handleSelect2012}
           handleSelect2014={handleSelect2014}
+          handleClear={handleClear}
+          selected={selected}
         />
       </div>
       {/*<Debug

@@ -5,13 +5,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
 }
 
 svg {
   margin: 1em;
   outline: 1px solid dimgray;
+  overflow: visible;
 }
 
 .title-bar {
@@ -29,4 +29,33 @@ svg {
 
 .legend {
   padding: 1em;
+}
+
+.controls {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  padding: 0.5em;
+}
+
+button {
+  padding: 1em;
+  font-size: 0.5em;
+  font-weight: bold;
+  border-radius: 12px;
+}
+
+button {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.2s;
+}
+
+button:hover {
+  background-color: tomato;
+  color: white;
 }

@@ -9,16 +9,16 @@ function App() {
   const domain = [0, 6];
   const range = [1.75, 3.25];
   const svgRef = useRef();
-  const { width } = useGetViewport();
+  const { width, height } = useGetViewport();
   const [svgWidth, setSvgWidth] = useState();
   const [svgHeight, setSvgHeight] = useState();
   const [selected, setSelected] = useState([]);
   const [filter, setFilter] = useState('aggregated');
 
   useEffect(() => {
-    setSvgWidth(width * 0.8);
-    setSvgHeight(width * 0.8 * 0.5);
-  }, [width]);
+    setSvgWidth(width * 0.6);
+    setSvgHeight(height * 0.5);
+  }, [width, height]);
 
   const handleSelect2008 = () => setSelected([selected[1], '2008-10']);
   const handleSelect2010 = () => setSelected([selected[1], '2010-12']);
@@ -47,7 +47,9 @@ function App() {
   return (
     <div className={styles.app}>
       <div className={styles.titleBar}>
-        <div className={styles.title}>Daily Sugar Intake Over Recommended</div>
+        <div className={styles.title}>
+          Daily Sugar Intake Over Recommended (UK)
+        </div>
       </div>
       <div className={styles.chart}>
         <Chart

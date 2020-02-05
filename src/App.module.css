@@ -9,7 +9,8 @@
 }
 
 .svg {
-  margin: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
   outline: 1px solid dimgray;
   overflow: visible;
 }
@@ -25,6 +26,7 @@
 .title {
   font-size: calc(10px + 2vmin);
   padding: 1em;
+  font-weight: bolder;
 }
 
 .legend {
@@ -56,27 +58,18 @@
 }
 
 .buttonSelected {
-  padding: 0.75em;
-  font-size: 0.5em;
-  font-weight: bold;
-  border-style: solid;
+  composes: button;
   background-color: tomato;
   color: white;
-  border-radius: 8px;
 }
 
 .buttonPrevious {
-  padding: 0.75em;
-  font-size: 0.5em;
-  font-weight: bold;
-  border-style: solid;
+  composes: button;
   background-color: dodgerblue;
   color: white;
-  border-radius: 8px;
 }
 
 .button:hover {
-  border-style: solid;
   background-color: tomato;
   color: white;
 }

@@ -8,37 +8,36 @@ import {
   axisBottom,
   axisLeft,
 } from 'd3';
+const data = require('./sugar.json');
 
 export default function Chart(props) {
-  const {
-    svgRef,
-    width,
-    height,
-    domain,
-    range,
-    labels,
-    data2008,
-    data2010,
-    data2012,
-    data2014,
-    selected,
-  } = props;
+  const { svgRef, width, height, domain, range, selected, filter } = props;
 
   useEffect(() => {
-    if (
-      svgRef &&
-      width &&
-      height &&
-      domain &&
-      range &&
-      labels &&
-      data2008 &&
-      data2010 &&
-      data2012 &&
-      data2014 &&
-      selected
-    ) {
+    if (Object.values(props).every(item => item)) {
       const svg = select(svgRef.current);
+
+      const aggregated = data.filter(value => value.gender === null);
+      const male = [
+        ...data.filter(value => value.group === 'child'),
+        ...data.filter(value => value.gender === 'male'),
+      ];
+      const female = [
+        ...data.filter(value => value.group === 'child'),
+        ...data.filter(value => value.gender === 'female'),
+      ];
+      const combined = year => {
+        return aggregated.map((value, index) => {
+          return {
+            age: value.age,
+            aggregated: aggregated[index][year],
+            male: male[index][year],
+            female: female[index][year],
+          };
+        });
+      };
+      const labels = aggregated.map(value => value.age);
+      const years = Object.keys(data[0]).slice(4, 8);
 
       const xScale = scaleLinear()
         .domain(domain)
@@ -55,6 +54,7 @@ export default function Chart(props) {
         .style('transform', `translateY(${height}px)`)
         .call(xAxis)
         .attr('color', 'dimgrey');
+
       const yAxis = axisLeft(yScale)
         .ticks(4)
         .tickFormat(value => value + 'X')
@@ -64,123 +64,69 @@ export default function Chart(props) {
         .call(yAxis)
         .attr('color', 'dimgrey');
 
-      const line2008 = line()
-        .x((value, index) => xScale(index))
-        .y(value => yScale(value.level))
-        .curve(curveCardinal);
-      svg
-        .attr('width', `${width}px`)
-        .attr('height', `${height}px`)
-        .selectAll('.line2008')
-        .data([data2008])
-        .join('path')
-        .attr('class', 'line2008')
-        .attr('d', line2008)
-        .attr('fill', 'none')
-        .attr(
-          'stroke',
-          selected[1] === 2008
-            ? 'tomato'
-            : selected[0] === 2008
-            ? 'dodgerblue'
-            : 'grey',
-        )
-        .attr(
-          'stroke-width',
-          selected[1] === 2008 ? '4' : selected[0] === 2008 ? '4' : '2',
-        );
+      const lineChart = group =>
+        line()
+          .x((value, index) => xScale(index))
+          .y(value => yScale(value[group] / 5))
+          .curve(curveCardinal);
 
-      const line2010 = line()
-        .x((value, index) => xScale(index))
-        .y(value => yScale(value.level))
-        .curve(curveCardinal);
-      svg
-        .attr('width', `${width}px`)
-        .attr('height', `${height}px`)
-        .selectAll('.line2010')
-        .data([data2010])
-        .join('path')
-        .attr('class', 'line2010')
-        .attr('d', line2010)
-        .attr('fill', 'none')
-        .attr(
-          'stroke',
-          selected[1] === 2010
-            ? 'tomato'
-            : selected[0] === 2010
-            ? 'dodgerblue'
-            : 'grey',
-        )
-        .attr(
-          'stroke-width',
-          selected[1] === 2010 ? '4' : selected[0] === 2010 ? '4' : '2',
-        );
+      function svgLine(data, group) {
+        svg
+          .selectAll(`.line${data}`)
+          .data([combined(data)])
+          .join('path')
+          .attr('class', `line${data}`)
+          .attr('d', lineChart(group))
+          .attr('opacity', filter === 'mvsf' ? 0 : 1)
+          .attr('fill', 'none')
+          .attr(
+            'stroke',
+            selected[1] === data
+              ? 'tomato'
+              : selected[0] === data
+              ? 'dodgerblue'
+              : 'grey',
+          )
+          .attr(
+            'stroke-width',
+            selected[1] === data ? '4' : selected[0] === data ? '4' : '2',
+          );
+      }
 
-      const line2012 = line()
-        .x((value, index) => xScale(index))
-        .y(value => yScale(value.level))
-        .curve(curveCardinal);
-      svg
-        .attr('width', `${width}px`)
-        .attr('height', `${height}px`)
-        .selectAll('.line2012')
-        .data([data2012])
-        .join('path')
-        .attr('class', 'line2012')
-        .attr('d', line2012)
-        .attr('fill', 'none')
-        .attr(
-          'stroke',
-          selected[1] === 2012
-            ? 'tomato'
-            : selected[0] === 2012
-            ? 'dodgerblue'
-            : 'grey',
-        )
-        .attr(
-          'stroke-width',
-          selected[1] === 2012 ? '4' : selected[0] === 2012 ? '4' : '2',
-        );
+      function svgLineColored(data, group) {
+        svg
+          .selectAll(`.line${group}`)
+          .data([combined(data)])
+          .join('path')
+          .attr('class', `line${group}`)
+          .attr('d', lineChart(group))
+          .attr('fill', 'none')
+          .attr('stroke', group === 'male' ? 'CornflowerBlue' : 'Orchid')
+          .attr('stroke-width', '4');
+      }
 
-      const line2014 = line()
-        .x((value, index) => xScale(index))
-        .y(value => yScale(value.level))
-        .curve(curveCardinal);
-      svg
-        .attr('width', `${width}px`)
-        .attr('height', `${height}px`)
-        .selectAll('.line2014')
-        .data([data2014])
-        .join('path')
-        .attr('class', 'line2014')
-        .attr('d', line2014)
-        .attr('fill', 'none')
-        .attr(
-          'stroke',
-          selected[1] === 2014
-            ? 'tomato'
-            : selected[0] === 2014
-            ? 'dodgerblue'
-            : 'grey',
-        )
-        .attr(
-          'stroke-width',
-          selected[1] === 2014 ? '4' : selected[0] === 2014 ? '4' : '2',
-        );
+      svg.attr('width', `${width}px`).attr('height', `${height}px`);
+
+      switch (filter) {
+        case 'mvsf':
+          years.forEach(year => svg.selectAll(`.line${year}`).remove());
+          svgLineColored(selected[1], 'male');
+          svgLineColored(selected[1], 'female');
+          break;
+        default:
+          svg.selectAll('.linemale').remove();
+          svg.selectAll('.linefemale').remove();
+          svgLine('2008-10', filter);
+          svgLine('2010-12', filter);
+          svgLine('2012-14', filter);
+          svgLine('2014-16', filter);
+      }
+
+      if (filter === 'mvsf') {
+      } else {
+      }
     }
-  }, [
-    svgRef,
-    width,
-    height,
-    domain,
-    range,
-    labels,
-    data2008,
-    data2010,
-    data2012,
-    data2014,
-    selected,
-  ]);
+  }, [props, svgRef, width, height, domain, range, selected, filter]);
 
   return (
     <React.Fragment>

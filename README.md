@@ -1,3 +1,49 @@
+## Dataviz demo using D3 with React Hooks
+
+<a href="https://d3js.org"><img src="https://d3js.org/logo.svg" align="left" hspace="10" vspace="6"></a>
+
+This demo was made for the Montreal [Data Viz Jam Sessions](https://www.meetup.com/Data-Viz-Jam-Sessions-MTL/) meetup as a [Makeover Monday](https://www.makeovermonday.co.uk/data/) excercise using data from [data.world](https://data.world/makeovermonday/2020w3-is-it-time-to-treat-sugar-like-smoking) on dietary sugar consumption [in the UK](https://www.nutrition.org.uk/nutritioninthenews/new-reports/ndnsyears7and8.html).
+
+The data is from [Week 3, Jan 20, 2020](https://www.makeovermonday.co.uk/data/) of the Makeover Monday data sets.
+
+<br>
+
+You can see the live demo at [https://sugardata.netlify.com](https://sugardata.netlify.com)
+
+## Installation
+
+Clone this repo using `git clone https://github.com/anselbrandt/dataviz-sugar.git`
+
+Or [download](https://github.com/anselbrandt/dataviz-sugar/archive/master.zip) it.
+
+```shell
+$ cd dataviz-sugar
+```
+
+Install npm packages
+
+```shell
+$ npm install
+```
+
+Then start
+
+```shell
+$ npm start
+```
+
+<br>
+
+#### Notes:
+
+The CSV data was converted to JSON for intial inspection, which isn't really necessary since D3 has great CSV handling.
+
+If you're curious, the conversion script is in the `/utils` folder.
+
+<br>
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

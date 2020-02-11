@@ -62,7 +62,7 @@ function App() {
           filter={filter}
         />
       </div>
-<div className={styles.xLabel}>Age Group</div>
+      <div className={styles.xLabel}>Age Group</div>
       <Controls
         handleSelect2008={handleSelect2008}
         handleSelect2010={handleSelect2010}

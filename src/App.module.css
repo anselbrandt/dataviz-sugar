@@ -29,6 +29,10 @@
   font-weight: bolder;
 }
 
+.xLabel {
+  font-size: 0.5em;
+}
+
 .legend {
   padding: 1em;
 }

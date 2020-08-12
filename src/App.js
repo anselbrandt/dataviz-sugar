@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import './App.css';
 import styles from './App.module.css';
 import Chart from './Chart';
 import useGetViewport from './useGetViewport';
